@@ -1,0 +1,22 @@
+<div id="container">
+	<div id="header">
+		<h1><a href="/">Nuki</a></h1>
+		<h2>A pure-Nu wiki.</h2>
+		<div id="menu">
+			<ul>
+				<li><a href="/">FrontPage</a></li>
+				<li><a href="<%= "/#{(TITLE)}" %>">Back to <%= (TITLE) %></a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<form action=<%= "/#{(TITLE)}/edit" %> method="post">
+			<label for="contents">Page contents: </label>
+			<textarea name="contents" rows=35 cols=75><%= (@page contents) %></textarea> <br/>
+			<input type="submit" value="Commit"/> <br/> <input type="reset"/>
+		</form>
+	</div>
+	<div id="footer">
+		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
+	</div>
+</div>

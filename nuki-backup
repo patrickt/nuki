@@ -1,0 +1,9 @@
+#!/usr/local/bin/nush
+
+(set dateString 
+  ((NSCalendarDate calendarDate) descriptionWithCalendarFormat:"%Y%m%d-%H%M"))
+
+(set command 
+	"cp site/data/Nuki.xml backups/Nuki-#{dateString}.xml")
+
+(system command)

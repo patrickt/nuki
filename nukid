@@ -1,0 +1,54 @@
+#!/usr/local/bin/nush
+;;
+;; nukid
+;;  Nuki daemon script
+;;
+
+(load "Nu:nu")      			;; essentials
+(load "Nu:cocoa")				;; wrapped frameworks
+(load "Nu:coredata")
+
+(load "NuHTTP")
+(load "NuHTTP:server")
+
+(load "Nuki")  			   	;; blog framework
+
+(set $site "./site")
+
+;;(set $site "#{(((NSBundle mainBundle) bundlePath) stringByDeletingLastPathComponent)}/site")
+(load "Nuki:extensions")
+(load "Nuki:application")
+
+;; define the application delegate class
+(class ApplicationDelegate is NSObject
+     (- session is $session)
+     (- managedObjectModel is ($session managedObjectModel))
+     (- managedObjectContext is ($session managedObjectContext))
+     (- persistentStoreCoordinator is ($session persistentStoreCoordinator))
+     
+     (- reload:sender is (reload))
+     
+     (- (void) applicationDidFinishLaunching: (id) sender is
+        (set nukimom ((NSBundle bundleWithIdentifier:"nu.programming.nuki") pathForResource:"Nuki" ofType:"mom"))
+        (set $session ((NuCoreDataSession alloc) initWithName:"Nuki" mom:nukimom xmlStore:"#{$site}/data/Nuki.xml"))
+        (if (($session objects) empty?)
+            (preload))))
+
+(macro reload
+     (load "Nuki:macros")
+     (load "Nuki:models")
+     (load "Nuki:preload")
+     (load "Nuki:server"))
+
+(reload)
+
+
+(global NSApp (NSApplication sharedApplication))
+
+;; install the delegate and keep a reference to it since the application won't retain it.
+(NSApp setDelegate:(set delegate ((ApplicationDelegate alloc) init)))
+(delegate applicationDidFinishLaunching:nil)
+((NSRunLoop currentRunLoop) run)
+
+
+

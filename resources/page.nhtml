@@ -1,0 +1,33 @@
+<div id="container">
+	<div id="header">
+		<h1><a href="/">Nuki</a></h1>
+		<h2>A pure-Nu wiki.</h2>
+		<div id="menu">
+			<ul>
+			  <% (if @page %>
+			  <%= (@page descriptiveLinkTo) %>
+			  <% ) %>
+				<li><a href="/">Return to the FrontPage</a></li>
+				<li><a href="<%= "/#{(page-title)}/edit" %>">Edit</a></li>
+				<li><a href="/list/pages">List of pages</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+	  <% (if ($flash notice) %>
+	  <div id="message" class="info"><%= ($flash notice) %></div>
+	  <% ) %>
+	  <% (if ($flash alert) %>
+	  <div id="message" class="alert"><%= ($flash alert) %></div>
+	  <% ) %>
+	  <% (if @page %>
+	    <h1>Viewing <%= (@page title) %></h1>
+	    <%= (NuMarkdown convert: ((@page contents) escapeHTML)) %>
+	    <% (else %>
+	      There's nothing here to view. Click 'Edit' to create the page.
+	      <% )) %>
+	</div>
+	<div id="footer">
+		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
+	</div>
+</div>

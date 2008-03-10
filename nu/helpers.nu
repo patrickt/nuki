@@ -1,0 +1,1 @@
+(set? $flash (dict "notice" nil "alert" nil))

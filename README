@@ -1,0 +1,18 @@
+ ================
+ = Installation =
+ ================
+
+
+Run:
+	nuke
+to build Nuki. A Nuki.app folder should appear; you may click on it to start a local instance.
+ ==========================================
+ = THE NUKI SERVER WILL RUN ON PORT 3900. =
+ ==========================================
+
+ ===========
+ = Credits =
+ ===========
+
+A metric ton of thanks go to Tim Burks for developing Nu, NuHTTP, and Nudge 
+(which I ripped off to a flabbergasting extent to build Nuki.)

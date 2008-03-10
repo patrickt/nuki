@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE database SYSTEM "file:///System/Library/DTDs/CoreData.dtd">
+
+<database>
+    <databaseInfo>
+        <version>134481920</version>
+        <UUID>73B2E693-9B8D-4E2A-830C-102787B73D71</UUID>
+        <nextObjectID>104</nextObjectID>
+        <metadata>
+            <plist version="1.0">
+                <dict>
+                    <key>NSPersistenceFrameworkVersion</key>
+                    <integer>0</integer>
+                    <key>NSStoreModelVersionHashes</key>
+                    <dict>
+                        <key>Page</key>
+                        <data>
+		XBcIUiPE44kcHU2OmSnLQlinRRgo5fvi02DTB4V74H4=
+		</data>
+                    </dict>
+                    <key>NSStoreModelVersionHashesVersion</key>
+                    <integer>3</integer>
+                    <key>NSStoreModelVersionIdentifiers</key>
+                    <array></array>
+                </dict>
+            </plist>
+        </metadata>
+    </databaseInfo>
+    <object type="PAGE" id="z102">
+        <attribute name="contents" type="string">Nuki is made with Cocoa, Nu, NuMarkdown, NuHTTP and a little work.
+
+A debt of thanks goes to Tim Burks for creating such a great language and toolset.
+</attribute>
+        <attribute name="title" type="string">AboutNuki</attribute>
+    </object>
+    <object type="PAGE" id="z103">
+        <attribute name="contents" type="string">Welcome to Nuki!
+
+This is a live-Nu wiki created by Patrick Thomson and released on January 6, 2008.  There's a lot more that can be done to it, but see what he's done so far!
+
+You can read Patrick's original announcement on the [Nu mailing list](http://groups.google.com/group/programming-nu/browse_thread/thread/96f78e4f7833cb1d#c768040c27b9f076).
+
+Nuki uses Grayson Hansard's NuMarkdown package for text formatting, NuHTTP to serve pages, CoreData to store them, and it's entirely written in Nu.
+
+[How to Nuki](/HowToNuki).</attribute>
+        <attribute name="title" type="string">FrontPage</attribute>
+    </object>
+    <object type="PAGE" id="z104">
+        <attribute name="contents" type="string">
+Just click the edit button to edit a page.
+
+Links are done with Markdown syntax: [AboutNuki](/AboutNuki)
+
+When you follow a link to a nonexistent page, you'll have the option to create it.
+
+Normal HTML is escaped: \u3c00b\u3e00 \u3c00/b\u3e00
+</attribute>
+        <attribute name="title" type="string">HowToNuki</attribute>
+    </object>
+</database>

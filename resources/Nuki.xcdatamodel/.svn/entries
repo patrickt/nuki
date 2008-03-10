@@ -1,0 +1,54 @@
+8
+
+dir
+12
+http://tools.assembla.com/svn/importantshock/Nuki/resources/Nuki.xcdatamodel
+http://tools.assembla.com/svn/importantshock
+
+
+
+2008-01-06T19:45:55.173628Z
+12
+ClockworkSparrow
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3b3456b0-7025-0410-acac-e66713f0c071
+
+elements
+file
+
+
+
+
+2008-01-06T20:40:41.000000Z
+8a035836850d7df1230b766c8dda4ae2
+2008-01-06T19:45:55.173628Z
+12
+ClockworkSparrow
+has-props
+
+layout
+file
+
+
+
+
+2008-01-06T20:40:41.000000Z
+c621b048e09231993b4e09ddf08d7cd8
+2008-01-06T19:45:55.173628Z
+12
+ClockworkSparrow
+has-props
+

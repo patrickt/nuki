@@ -1,0 +1,17 @@
+<div id="container">
+	<div id="header">
+		<h1><a href="/">Nuki</a></h1>
+		<h2>A pure-Nu wiki.</h2>
+		<div id="menu">
+			<ul>
+				<li><a href="/">FrontPage</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<% (@pages each: (do (page) %><%= (page linkTo) %> <%= (page deleteButton) %> <br><% )) %>
+	</div>
+	<div id="footer">
+		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
+	</div>
+</div>
