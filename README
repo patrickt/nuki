@@ -1,3 +1,9 @@
+ ===============
+ = Information =
+ ===============
+
+This version of Nuki depends on Core Data and NuHTTP. Further versions will use Git and Nunja.
+
  ================
  = Installation =
  ================
@@ -14,5 +20,5 @@ to build Nuki. A Nuki.app folder should appear; you may click on it to start a l
  = Credits =
  ===========
 
-A metric ton of thanks go to Tim Burks for developing Nu, NuHTTP, and Nudge 
+A metric ton of thanks go to Tim Burks for developing Nu, NuHTTP, and Nudge. 
 (which I ripped off to a flabbergasting extent to build Nuki.)
