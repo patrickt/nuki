@@ -1,3 +1,9 @@
+ ===============
+ = Description =
+ ===============
+
+This version of Nuki will depend on Nunja and Git for its web server and version control.
+
  ================
  = Installation =
  ================
