@@ -1,55 +1,52 @@
 (load "macros")
-(load "helpers")
-(load "extensions")
 
-(class GitSession is NSObject
-     (accessor location)
+(class GitBlob is NSObject
      
-     (+ (id) sessionWithLocation:(id)loc is
-          (set s (GitSession new))
-          (s setLocation: loc)
-          s)
-     
-     (- (id) command:(id)text
-          (puts "Nu: git #{text}")
-          (shell "git #{text}"))
-          
-     (- (id) addFile:(id)file
-          )
-     
-     )
-
-(function git (command)
-     (puts "Nu: git #{command}")
-     (shell "git #{command}"))
-
-(function add (path)
-     (git "add #{path}"))
-     
-(function commit
-     (git "commit -m Automatically generated commit from the Nu-Git interface."))
-     
-;; High-level interface to a Git-backed file.
-(class GitBackedFile is NSObject
      (accessor path)
-
-     (- (id) initWithPath:(id)path is
-          (super init)
-          (set @path path)
-          self)
      
-     (- (id) currentContents is
-          (NSString stringWithContentsOfFile: (concat-paths REPOSITORY_LOCATION @path) encoding: 4 error: nil))
+     (+ (id) withPath:(id)p is
+          (set b (GitBlob new))
+          (b setPath: p)
+          b)
      
-     (- (id) revisionsAgo:(int)ago is
-          (git "show HEAD~#{ago}:#{@path}"))
-          
-     (- (void) writeText:(id)text is
-          (text writeToFile: (concat-paths REPOSITORY_LOCATION @path)
+     (- (id) filesystemContents is 
+          (NSString 
+               stringWithContentsOfFile: (concat-paths ($session location) @path)
+               encoding: 4
+               error: nil))
+     
+     (- (id) headRevision is 
+          ($session command: "show :#{@path}"))
+     
+     (- (id) revisionsAgo:(int)ago is 
+          ($session command: "show @{#{ago}}:#{@path}"))
+     
+     (- (id) diffRevisionsAgo:(int)ago is nil)
+     
+     (- (id) writeString:(id)string is
+          (string 
+               writeToFile: (concat-paths ($session location) @path)
                atomically: YES
                encoding: 4
                error: nil))
      
-     (- (void) save is
-          (add (@path lastPathComponent))
-          (commit)))
+     (- (void) add is 
+          ($session command: "add #{@path}")))
+
+(class GitSession is NSObject
+     (accessor location)
+     
+     (- (id) initInDirectory:(id)path is
+          (super init)
+          (set @location path)
+          (unless (NSFileManager directoryContentsAtPath: (concat-paths (NSFileManager currentDirectoryPath) ".git"))
+               (NSLog "Initializing new git repository.")
+               (self command: "init"))
+          self)
+     
+     (- (id) command:(id)text is
+          (puts "Nu: git #{text}")
+          (shell "git #{text}"))
+          
+     (- (id) commit is
+          (self command: "commit -m 'Automatically generated commit from Nu.'")))

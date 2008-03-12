@@ -32,7 +32,6 @@
 (framework-tasks)
 
 (task "clobber" => "clean" is
-      (SH "rm -rf #{@application_dir}/resources/*.mom")
       (SH "rm -rf #{@application_dir}/Nuki.app/"))
 
 (task "default" => "application")

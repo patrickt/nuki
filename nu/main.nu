@@ -8,15 +8,17 @@
 (load "Nu:console")	     ;; interactive console
 (load "Nu:template")	;; nu templates
 (load "Nu:coredata")
+(load "nunja")
+(load "NuMarkdown")
 
 (macro reload
-     (load "extensions")
+     (load "server")
+     (load "macros")
      (load "helpers")
      (load "git")
-     (load "macros")
      (load "models")
      (load "preload")
-     (load "server"))
+     (load "application"))
 
 (reload)
 
