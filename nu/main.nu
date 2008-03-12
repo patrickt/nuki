@@ -9,14 +9,10 @@
 (load "Nu:template")	;; nu templates
 (load "Nu:coredata")
 
-(load "NuHTTP:server")
-
-
-(set $site "#{(((NSBundle mainBundle) bundlePath) stringByDeletingLastPathComponent)}/site")
-(load "extensions")
-(load "application")
-
 (macro reload
+     (load "extensions")
+     (load "helpers")
+     (load "git")
      (load "macros")
      (load "models")
      (load "preload")

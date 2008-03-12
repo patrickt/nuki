@@ -1,8 +1,12 @@
 ;; @file extensions.nu
 ;; @discussion Extensions to preexisting classes.
 
-;; @copyright  Copyright (c) 2008 Patrick Thomson. Released to the public under the Ruby license.
+;; @copyright  Copyright (c) 2008 Patrick Thomson. Released to the public under the Apache
 
+;; Forwards unknown methods to the singleton instance of NSFileManager.
+(class NSFileManager
+     (+ handleUnknownMessage:message withContext:context is
+        ((NSFileManager defaultManager) sendMessage:message withContext:context)))
 
 (class NSManagedObject
      ;; Syntactic sugar for creation of an NSManagedObject.

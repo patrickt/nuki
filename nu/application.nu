@@ -5,55 +5,11 @@
 ;; @abstract Ideally, all the Core-Data related code in the ApplicationDelegate could be refactored into a CoreDataDelegate object included in the main Nu distribution - there's going to be things that every Core Data application needs. But we'll burn that bridge when we come to it.
 
 (class ApplicationDelegate is NSObject
-     ;; Accessor for the session global.
-     (- (id) session is 
-          $session)
-     
-     ;; Accessor for the Core Data object model.
-     (- (id) managedObjectModel is 
-          ($session managedObjectModel))
-     
-     ;; Accessor for the Core Data object context.
-     (- (id) managedObjectContext is 
-          ($session managedObjectContext))
-          
-     ;; Accessor for the Core Data persistent store coordinator.
-     (- (id) persistentStoreCoordinator is 
-          ($session persistentStoreCoordinator))
-     
-     ;; Reloads the auxiliary files.
-     (- (void) reload:(id)sender is
-        (reload))
-       
-     ;; Loads the front page in a browser. Accessed through the menu.
-     (- (void) openBrowser:(id) sender is
-          ((NSWorkspace sharedWorkspace) openURL: (NSURL URLWithString: @"http://localhost:3900")))
-     
-     ;; Pops up a Nu console where one can run commands.
-     (- (void) toggleConsole:(id)sender is
-        (set? $console (NuConsoleWindowController new))
-        ($console toggleConsole: self))
      
      ;; Callback that builds the menu and initializes the sessions
      (- (void) applicationDidFinishLaunching: (id) sender is
-        (build-menu nuki-application-menu "Nuki")
-        (set nuki-mom ((NSBundle mainBundle) pathForResource:"Nuki" ofType:"mom"))
-        (set $session ((NuCoreDataSession alloc) initWithName:"Nuki" mom:nuki-mom sqliteStore:"#{$site}/data/Nuki.data"))
-        ; During development, sometimes the persistent store coordinator would be unable to save.
-        ; This catches that contingency.
-        (if (eq ((($session persistentStoreCoordinator) persistentStores) count) 0)
-            (set alert (NSAlert new))
-            (alert set: (messageText: "Nuki encountered a data storage error."
-                         informativeText: "Nuki was unable to obtain a persistent store coordinator. Saving will be disabled. Try restarting/recompiling Nuki, and make sure that the site/data directory is writable."
-                         alertStyle: NSWarningAlertStyle))
-            (alert addButtonWithTitle: "OK")
-            (alert runModal)
-            (else
-                 (puts "Session has #{((($session persistentStoreCoordinator) persistentStores) count)} store(s).")))
         
-        ;; Making sure that some objects are included if this is the first run.
-        (if (($session objects) empty?)
-            (preload))))
+        
 
 
 
