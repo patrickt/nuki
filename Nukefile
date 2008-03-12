@@ -1,14 +1,12 @@
 ;; source files
 (set @nu_files 	  (filelist "^nu/.*nu$"))
-(set @icon_files  (filelist "^resources/.*icns$"))
 
-(set @frameworks  '("Cocoa" "Nu"))
-(set @includes    "")
-(set @resources (filelist "^resources/.*.nhtml"))
-(set @datamodels  (filelist "^resources/.*.xcdatamodel$"))
+(set @frameworks    '("Cocoa" "Nu"))
+(set @includes      "")
+(set @resources     (filelist "^resources/.*.nhtml"))
 
 ;; application description
-(set @application "Nuki")
+(set @application              "Nuki")
 (set @application_identifier   "nu.programming.nuki")
 (set @application_creator_code "????")
 
