@@ -1,50 +1,21 @@
 ;; @file macros.nu
 ;; @discussion Utility macros used throughout the Nuki source.
 
-;; A conditional assignment operator, like Ruby's ||=. Takes two arguments: the variable name to check and its prospective value.
-(macro set?
-     (unless ((context) (car margs))
-             ((context) setObject: (eval (car (cdr margs))) forKey: (car margs))))
+(global template-named
+        (macro template-named-macro
+             (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml")))
 
-;; Renders a template. Takes one argument: the name of the file to render, without the .nhtml extension.
-(global render-template
-     (macro __
-          (eval (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml"))))
+(global file-named
+        (macro file-named-macro
+             (NSString stringWithContentsOfFile: "#{$site}/#{(eval (car margs))}"
+                  encoding: 4 # Unicode
+                  error: nil)))
 
-;; Used internally to make setFoo: method names.
-(function make-setter-name (oldName)
-     (set newName "set")
-     (newName appendString:((oldName substringToIndex:1) capitalizedString))
-     (newName appendString:((oldName substringFromIndex:1)))
-     (newName appendString:":")
-     newName)
-
-;; Creates an accessor method.
-(macro reader
-     (set __name ((car margs) stringValue))
-     (_class addInstanceVariable:__name
-             signature:"@")
-     (_class addInstanceMethod:__name
-             signature:"@"
-             body:(do () (self valueForIvar:__name))))
-
-;; Creates a mutator method.
-(macro writer
-     (set __name ((car margs) stringValue))
-     (_class addInstanceVariable:__name
-             signature:"@")
-     (_class addInstanceMethod:(make-setter-name __name)
-             signature:"v"
-             body:(do (new) (self setValue:new forIvar:__name))))
-
-;; Creates accessor/mutator methods.
-(macro accessor
-     (set __name ((car margs) stringValue))
-     (_class addInstanceVariable:__name
-             signature:"@")
-     (_class addInstanceMethod:__name
-             signature:"@"
-             body:(do () (self valueForIvar:__name)))
-     (_class addInstanceMethod:(make-setter-name __name)
-             signature:"v"
-             body:(do (new) (self setValue:new forIvar:__name))))
+;; Default header information
+(global default-headers
+        (macro default-headers-macro
+             (set HEAD <<-END
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
+END)
+             (set TITLE (@match string))))

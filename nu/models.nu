@@ -3,6 +3,8 @@
 
 (class Page is GitBlob
      
+     (+ (id) linkToPage:(id)name is nil)
+     
      (+ (id) pageExistsWithName:(id)name is
           (NSFileManager fileExistsAtPath: "./#{name}"))
      

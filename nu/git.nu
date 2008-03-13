@@ -2,7 +2,7 @@
 
 (class GitBlob is NSObject
      
-     (accessor path)
+     (ivars) (ivar-accessors)
      
      (+ (id) withPath:(id)p is
           (set b (GitBlob new))
@@ -34,7 +34,7 @@
           ($session command: "add #{@path}")))
 
 (class GitSession is NSObject
-     (accessor location)
+     (ivars) (ivar-accessors)
      
      (- (id) initInDirectory:(id)loc is
           (super init)

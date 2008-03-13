@@ -1,31 +1,19 @@
+;; @file site.nu
+;; @discussion Handlers for HTTP requests.
+
 (load "macros")
 
-(global default-parameters
-     (macro _
-          (set HEAD <<-END
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
-END)
-          (set TITLE (@match string))))
-
 (get "/"
-     (default-parameters)
-     (NSLog "Parameters gotten to")
+     (default-headers)
      (set @page (Page fetchPage: "FrontPage"))
-     (NSLog "Page is #{@page}, rendering template")
-     (set pc (eval (NuTemplate codeForFileNamed: "#{$site}/page.nhtml")))
-     (NSLog "Page contents are #{pc}")
-     pc)
+     (set TITLE ("Front Page"))
+     (eval (template-named "page")))
 
 (get "/nuki.css"
      (request setValue: "text/css" forResponseHeader:"Content-Type")
-     (NSString 
-          stringWithContentsOfFile: (concat-paths $site "nuki.css")
-          encoding: 4
-          error: nil))
+     (file-named "nuki.css"))
 
 (get /\/(\w*)/
-     (default-parameters)
+     (default-headers)
      (set @page (Page fetchPage: (TITLE lastPathComponent)))
-     (render-template "page"))
-     
+     (eval (template-named "page")))
