@@ -36,12 +36,13 @@
 
 (function shell (cmd)
      (NSString stringWithShellCommand: cmd))
-     
+
+(global concat-paths     
 (function concat-paths (*args)
      (set result "")
      (while (*args)
           (set result (result stringByAppendingPathComponent: (car *args)))
           (set *args (cdr *args)))
-     result)
+     result))
 
 (global REPOSITORY_LOCATION "/Users/patrick/Repositories/Nuki")

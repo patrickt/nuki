@@ -11,7 +11,7 @@
      
      (- (id) filesystemContents is 
           (NSString 
-               stringWithContentsOfFile: (concat-paths $site @path)
+               stringWithContentsOfFile: (concat-paths $site "pages" @path)
                encoding: 4
                error: nil))
      

@@ -9,10 +9,7 @@
 ;; Renders a template. Takes one argument: the name of the file to render, without the .nhtml extension.
 (global render-template
      (macro __
-          (eval (NuTemplate codeForFileNamed:
-                     ((NSBundle bundleWithIdentifier:"nu.programming.nuki")
-                      pathForResource:(eval (car margs))
-                      ofType:"nhtml")))))
+          (eval (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml"))))
 
 ;; Used internally to make setFoo: method names.
 (function make-setter-name (oldName)
