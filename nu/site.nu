@@ -2,13 +2,18 @@
 
 (global default-parameters
      (macro _
+          (set HEAD <<-END
+
+END)
           (set TITLE (@match string))))
 
 (get "/"
-     (set frontpage (Page fetchPage: "FrontPage"))
-     (frontpage filesystemContents))
+     (default-parameters)
+     (set @page (Page fetchPage: "FrontPage"))
+     (render-template "page"))
      
 (get /\/(\w*)/
      (default-parameters)
-     "HELLO THERE")
+     (set @page (Page fetchPage: (TITLE lastPathComponent)))
+     (render-template "page"))
      

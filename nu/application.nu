@@ -4,8 +4,6 @@
 ;;
 ;; @abstract Ideally, all the Core-Data related code in the ApplicationDelegate could be refactored into a CoreDataDelegate object included in the main Nu distribution - there's going to be things that every Core Data application needs. But we'll burn that bridge when we come to it.
 
-
-
 (class ApplicationDelegate is NSObject
      
      (- (void) moveIntoPageDirectory is
@@ -18,7 +16,6 @@
           (NSLog "Nuki: launching.")
           (self moveIntoPageDirectory)
           (set $session ((GitSession alloc) initInDirectory: (NSFileManager currentDirectoryPath)))
-          
           (preload)
           
           (set n (Nunja new))

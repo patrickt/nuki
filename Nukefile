@@ -3,7 +3,7 @@
 
 (set @frameworks    '("Cocoa" "Nu"))
 (set @includes      "")
-(set @resources     (filelist "^resources/.*.nhtml"))
+(set @resources     (filelist "^resources/*"))
 
 ;; application description
 (set @application              "Nuki")
