@@ -9,6 +9,8 @@
 ;; A macro that grabs the current request's last path component. Takes no arguments.
 (macro page-title ((request "path") lastPathComponent))
 
+
+
 ;; Renders a template. Takes one argument: the name of the file to render, without the .nhtml extension.
 (macro render-template
      (eval (NuTemplate codeForFileNamed:

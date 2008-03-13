@@ -12,7 +12,6 @@
 (load "NuMarkdown")
 
 (macro reload
-     (load "server")
      (load "macros")
      (load "helpers")
      (load "git")

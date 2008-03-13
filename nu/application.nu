@@ -18,12 +18,11 @@
           (NSLog "Nuki: launching.")
           (self moveIntoPageDirectory)
           (set $session ((GitSession alloc) initInDirectory: (NSFileManager currentDirectoryPath)))
-          (set fp (Page fetchOrMakePage: "FrontPage"))
-          (NSLog "Page created: #{fp}")
-          (NSLog "Page contents are: #{(fp filesystemContents)}")
-          (NSLog "Now writing a string")
-          (fp writeString: "Sixteen motherfuckers.")
-          (NSLog "Page contents are now #{(fp filesystemContents)}")
-          (fp add)
-          ($session commit)))
+          
+          (preload)
+          
+          (set n (Nunja new))
+          (n bindToAddress: "0.0.0.0" port: "3900")
+          (n setDelegate: ((NunjaDelegate alloc) initWithSite: ((NSBundle mainBundle) resourcePath)))
+          (n run)))
         
