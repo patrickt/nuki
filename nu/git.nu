@@ -11,7 +11,7 @@
      
      (- (id) filesystemContents is 
           (NSString 
-               stringWithContentsOfFile: (concat-paths ($session location) @path)
+               stringWithContentsOfFile: (concat-paths $site @path)
                encoding: 4
                error: nil))
      
@@ -25,7 +25,7 @@
      
      (- (id) writeString:(id)string is
           (string 
-               writeToFile: (concat-paths ($session location) @path)
+               writeToFile: (concat-paths $site @path)
                atomically: YES
                encoding: 4
                error: nil))
@@ -36,10 +36,10 @@
 (class GitSession is NSObject
      (accessor location)
      
-     (- (id) initInDirectory:(id)path is
+     (- (id) initInDirectory:(id)loc is
           (super init)
-          (set @location path)
-          (unless (NSFileManager directoryContentsAtPath: (concat-paths (NSFileManager currentDirectoryPath) ".git"))
+          (set @location loc)
+          (unless (NSFileManager directoryContentsAtPath: "#{$site}/#{@location}/.git")
                (NSLog "Initializing new git repository.")
                (self command: "init"))
           self)

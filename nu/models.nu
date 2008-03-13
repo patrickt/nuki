@@ -4,11 +4,11 @@
 (class Page is GitBlob
      
      (+ (id) pageExistsWithName:(id)name is
-          (NSFileManager fileExistsAtPath: (concat-paths ($session location) name)))
+          (NSFileManager fileExistsAtPath: "./#{name}"))
      
-     (+ (id) fetchPage:(id)path is
-          (Page withPath: path))
+     (+ (id) fetchPage:(id)name is
+          (Page withPath: name))
      
-     (+ (id) fetchOrMakePage:(id)path is
-          (shell "touch #{path}")
-          (Page withPath: path)))
+     (+ (id) fetchOrMakePage:(id)name is
+          (shell "touch ./#{name}")
+          (Page fetchPage: name)))

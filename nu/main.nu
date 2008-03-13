@@ -17,7 +17,9 @@
      (load "git")
      (load "models")
      (load "preload")
-     (load "application"))
+     (load "application")
+     (set $site "/Users/patrick/Repositories/Nuki/site")
+     (NSFileManager changeCurrentDirectoryPath: "#{$site}/pages"))
 
 (reload)
 
