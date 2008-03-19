@@ -12,6 +12,8 @@
 (load "nunja")
 
 (set $site "./site")
+(set $ip "0.0.0.0")
+(set $port "3900")
 
 (load "Nuki")
 (load "Nuki:helpers")
@@ -25,7 +27,7 @@
      (- (void) applicationDidFinishLaunching: (id) sender is
         (set $session ((GitSession alloc) initInDirectory: "pages"))
         (set $server ((Nunja alloc) init))
-        ($server bindToAddress: "0.0.0.0" port: "3900")
+        ($server bindToAddress: $ip port: $port)
         ($server setDelegate: ((NunjaDelegate alloc) initWithSite: $site))
         ($nunja setRoot: $site)
         (preload)))
@@ -44,6 +46,7 @@
 ;; install the delegate and keep a reference to it since the application won't retain it.
 (NSApp setDelegate:(set delegate ((ApplicationDelegate alloc) init)))
 (delegate applicationDidFinishLaunching:nil)
+(puts "Nuki has loaded. Surf to http://#{$ip}:#{$port}.")
 ($server run)
 
 

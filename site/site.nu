@@ -5,7 +5,6 @@
      (default-headers)
      (set @page (Page fetchPage: "FrontPage"))
      (set TITLE ("Front Page"))
-     (NSLog "Link: #{(@page link)}")
      (eval (template-named "page")))
 
 (get "/nuki.css"
@@ -14,5 +13,6 @@
 
 (get /\/(\w*)/
      (default-headers)
+     (puts "Nuki: asked for #{((TITLE pathComponents) description)}")
      (set @page (Page fetchPage: (TITLE lastPathComponent)))
      (eval (template-named "page")))

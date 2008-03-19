@@ -1,21 +1,37 @@
-;; @file macros.nu
-;; @discussion Utility macros used throughout the Nuki source.
-
 (global template-named
-        (macro template-named-macro
+        (macro __tn
              (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml")))
 
 (global file-named
-        (macro file-named-macro
+        (macro __fn
              (NSString stringWithContentsOfFile: "#{$site}/#{(eval (car margs))}"
                   encoding: 4 # Unicode
                   error: nil)))
 
 ;; Default header information
 (global default-headers
-        (macro default-headers-macro
+        (macro __dh
              (set HEAD <<-END
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
 END)
              (set TITLE (@match string))))
+
+
+
+(global extract-page-path
+        (do (components)
+            (components description)))
+
+(global shell
+        (do (cmd)
+            (NSString stringWithShellCommand: cmd)))
+
+(global concat-paths
+        (do (*args)
+            (set result "")
+            (while (*args)
+                   (set result (result stringByAppendingPathComponent: (car *args)))
+                   (set *args (cdr *args)))
+            result))
+

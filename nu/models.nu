@@ -13,7 +13,9 @@
           (NSFileManager fileExistsAtPath: "./#{name}"))
      
      (+ (id) fetchPage:(id)name is
-          (Page withPath: name))
+          (set p (Page new))
+          (p setPath: name)
+          p)
      
      (+ (id) fetchOrMakePage:(id)name is
           (shell "touch ./#{name}")

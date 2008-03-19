@@ -33,16 +33,3 @@
                 (1 (self objectForKey: ((first message) stringValue)))
                 (2 (self setObject: (second message) forKey: (((first message) labelName) stringValue)))
                 (else (super handleUnknownMessage: message withContext: ctx)))))
-
-(function shell (cmd)
-     (NSString stringWithShellCommand: cmd))
-
-(global concat-paths     
-(function concat-paths (*args)
-     (set result "")
-     (while (*args)
-          (set result (result stringByAppendingPathComponent: (car *args)))
-          (set *args (cdr *args)))
-     result))
-
-(global REPOSITORY_LOCATION "/Users/patrick/Repositories/Nuki")
