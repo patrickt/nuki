@@ -1,12 +1,11 @@
 ;; @file site.nu
 ;; @discussion Handlers for HTTP requests.
 
-(load "macros")
-
 (get "/"
      (default-headers)
      (set @page (Page fetchPage: "FrontPage"))
      (set TITLE ("Front Page"))
+     (NSLog "Link: #{(@page link)}")
      (eval (template-named "page")))
 
 (get "/nuki.css"

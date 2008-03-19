@@ -3,7 +3,11 @@
 
 (class Page is GitBlob
      
-     (+ (id) linkToPage:(id)name is nil)
+     (- (id) link is
+          "LINKY LINKY")
+
+     (- (id) descriptiveLinkTo is
+          "<a href=\"/#{@path}\">Viewing #{@path}</a>")
      
      (+ (id) pageExistsWithName:(id)name is
           (NSFileManager fileExistsAtPath: "./#{name}"))

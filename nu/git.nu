@@ -1,5 +1,3 @@
-(load "macros")
-
 (class GitBlob is NSObject
      
      (ivars) (ivar-accessors)

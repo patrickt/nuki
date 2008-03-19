@@ -3,7 +3,10 @@
 		<h1><a href="/">Nuki</a></h1>
 		<h2>A pure-Nu wiki.</h2>
 		<div id="menu">
-			
+			<ul>
+			    <li><a href="/">FrontPage</a></li>
+                <li><%= (@page filesystemContents) %></li>
+			</ul>
 		</div>
 	</div>
 	<div id="content">
