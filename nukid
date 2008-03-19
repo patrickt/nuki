@@ -16,6 +16,8 @@
 (set $port "3900")
 
 (load "Nuki")
+(load "Nuki:git")
+(load "Nuki:extensions")
 (load "Nuki:helpers")
 
 ;; define the application delegate class
@@ -33,9 +35,10 @@
         (preload)))
 
 (macro reload
+     (load "Nuki:extensions")
+     (load "Nuki:helpers")
      (load "Nuki:git")
      (load "Nuki:macros")
-     (load "Nuki:models")
      (load "Nuki:preload"))
 
 (reload)

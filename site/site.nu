@@ -3,8 +3,9 @@
 
 (get "/"
      (default-headers)
-     (set @page (Page fetchPage: "FrontPage"))
-     (set TITLE ("Front Page"))
+     (set @page (GitBlob fetchBlobAtPath: "FrontPage"))
+     (set @path "FrontPage")
+     (set TITLE "Front Page")
      (eval (template-named "page")))
 
 (get "/nuki.css"
@@ -13,6 +14,21 @@
 
 (get /\/(\w*)/
      (default-headers)
-     (puts "Nuki: asked for #{((TITLE pathComponents) description)}")
-     (set @page (Page fetchPage: (TITLE lastPathComponent)))
+     (set @path (TITLE lastPathComponent))
+     (set @page (GitBlob fetchBlobAtPath: @path))
      (eval (template-named "page")))
+
+(get /\/(\w*)\/edit/
+     (default-headers)
+     (set @path (TITLE pathComponent: 1))
+     (set @page (GitBlob fetchBlobAtPath: @path))
+     (eval (template-named "edit")))
+
+(post /\/(\w*)\/edit/
+     (default-headers)
+     (set post (request post))
+     (set @path (TITLE pathComponent: 1))
+
+     (set @page (GitBlob fetchBlobAtPath: @path))
+     (@page writeString: (post "contents"))
+     (self redirectResponse: request toLocation: "/"))

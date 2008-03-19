@@ -16,22 +16,3 @@
 <link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
 END)
              (set TITLE (@match string))))
-
-
-
-(global extract-page-path
-        (do (components)
-            (components description)))
-
-(global shell
-        (do (cmd)
-            (NSString stringWithShellCommand: cmd)))
-
-(global concat-paths
-        (do (*args)
-            (set result "")
-            (while (*args)
-                   (set result (result stringByAppendingPathComponent: (car *args)))
-                   (set *args (cdr *args)))
-            result))
-

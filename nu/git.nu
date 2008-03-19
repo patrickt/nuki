@@ -2,10 +2,12 @@
      
      (ivars) (ivar-accessors)
      
-     (+ (id) withPath:(id)p is
-          (set b (GitBlob new))
-          (b setPath: p)
-          b)
+     (+ (id) fetchBlobAtPath:(id)p is
+          (if ($session blobExistsAtPath: p)
+               (set x (GitBlob new))
+               (x setPath: p)
+               x
+               (else nil)))
      
      (- (id) filesystemContents is 
           (NSString 
@@ -23,7 +25,7 @@
      
      (- (id) writeString:(id)string is
           (string 
-               writeToFile: (concat-paths $site @path)
+               writeToFile: (concat-paths $site ($session location) @path)
                atomically: YES
                encoding: 4
                error: nil))
@@ -38,7 +40,7 @@
           (super init)
           (set @location loc)
           (unless (NSFileManager directoryContentsAtPath: "#{$site}/#{@location}/.git")
-               (NSLog "Initializing new git repository.")
+               (puts "Initializing new git repository.")
                (self command: "init"))
           self)
      
@@ -47,4 +49,7 @@
           (shell "git #{text}"))
           
      (- (id) commit is
-          (self command: "commit -m 'Automatically generated commit from Nu.'")))
+          (self command: "commit -m 'Automatically generated commit from Nu.'"))
+          
+     (- (id) blobExistsAtPath:(id)path is
+          (NSFileManager fileExistsAtPath: "#{$site}/#{@location}/#{path}")))
