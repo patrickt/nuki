@@ -11,44 +11,34 @@
 
 (load "nunja")
 
-(set $site "./site")
 (set $ip "0.0.0.0")
 (set $port "3900")
+
+(load "NuMarkdown")
 
 (load "Nuki")
 (load "Nuki:git")
 (load "Nuki:extensions")
 (load "Nuki:helpers")
+(load "Nuki:macros")
+(load "Nuki:preload")
 
-;; define the application delegate class
-(class ApplicationDelegate is NSObject
-     (- session is $session)
-     
-     (- reload:sender is (reload))
-     
-     (- (void) applicationDidFinishLaunching: (id) sender is
-        (set $server ((Nunja alloc) init))
-        ($server bindToAddress: $ip port: $port)
-        ($server setDelegate: ((NunjaDelegate alloc) initWithSite: $site))
-        ($nunja setRoot: $site)
-        (set $session ((GitSession alloc) initInDirectory: "pages"))
-        (preload)))
-
-(macro reload
-     (load "Nuki:extensions")
-     (load "Nuki:helpers")
-     (load "Nuki:git")
-     (load "Nuki:macros")
-     (load "Nuki:preload"))
-
-(reload)
+(set $root (NSFileManager currentDirectoryPath))
+(set $site ($root stringByAppendingPathComponent: "site"))
+(set $repository ($root stringByAppendingPathComponent: "pages"))
+(puts "Nuki is running in #{$root}.")
+(puts "Site contents are stored at #{$site}.")
+(puts "Git repository is located in #{$repository}")
 
 
-(global NSApp (NSApplication sharedApplication))
+(set $server (Nunja new))
+($server bindToAddress: $ip port: $port)
+($server setDelegate: ((NunjaDelegate alloc) initWithSite: "./site"))
+($nunja setRoot: $site)
+(set $session ((GitSession alloc) initInDirectory: "pages"))
 
-;; install the delegate and keep a reference to it since the application won't retain it.
-(NSApp setDelegate:(set delegate ((ApplicationDelegate alloc) init)))
-(delegate applicationDidFinishLaunching:nil)
+(preload)
+
 (puts "Nuki has loaded. Surf to http://#{$ip}:#{$port}.")
 ($server run)
 

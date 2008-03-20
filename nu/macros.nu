@@ -1,10 +1,10 @@
 (global template-named
         (macro __tn
-             (NuTemplate codeForFileNamed: "../#{(eval (car margs))}.nhtml")))
+             (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml")))
 
 (global file-named
         (macro __fn
-             (NSString stringWithContentsOfFile: "../#{(eval (car margs))}"
+             (NSString stringWithContentsOfFile: "#{$site}/#{(eval (car margs))}"
                   encoding: 4 # Unicode
                   error: nil)))
 

@@ -1,13 +1,15 @@
 (function preload ()
-     (unless ($session blobExistsAtPath: "FrontPage")
+     (unless ($session fileExists: "FrontPage")
           (puts "Loading pages into database.")
-          (set fp (GitBlob fetchBlobAtPath: "FrontPage"))
-          (fp writeString: "This is the Front Page.")
-          (fp add)
+          ($session createBlob: "FrontPage" withContents:
+<<-END
+Welcome to Nuki!
 
-          (set ab (GitBlob fetchBlobAtPath: "About"))
-          (ab writeString: "Nuki was made with an absurd amount of effort.")
-          (ab add)
+Nuki is a simple Wiki engine powered by the Nunja web server, the Git version control system, and NuMarkdown.
+As you can _see_, Markdown works - however, <em>regular</em> HTML is escaped.
+END))
+          (unless ($session fileExists: "About") 
+               ($session createBlob: "About" withContents: "Nuki was made by Patrick Thomson."))
 
-          ($session commit)))
+          ($session commit))
 

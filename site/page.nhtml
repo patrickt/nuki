@@ -11,7 +11,7 @@
 	</div>
 	<div id="content">
 	    <% (if @page %>
-	        <%= ((@page filesystemContents) escapeHTML) %>
+	        <%= (NuMarkdown convert: ((@page filesystemContents) escapeHTML)) %>
 	        <% (else %>
 	            The page '<%= @path %>' doesn't exist yet. Click on the 'Edit' link above to create it. <% )) %>
 	</div>
