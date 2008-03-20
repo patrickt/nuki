@@ -27,11 +27,11 @@
      (- reload:sender is (reload))
      
      (- (void) applicationDidFinishLaunching: (id) sender is
-        (set $session ((GitSession alloc) initInDirectory: "pages"))
         (set $server ((Nunja alloc) init))
         ($server bindToAddress: $ip port: $port)
         ($server setDelegate: ((NunjaDelegate alloc) initWithSite: $site))
         ($nunja setRoot: $site)
+        (set $session ((GitSession alloc) initInDirectory: "pages"))
         (preload)))
 
 (macro reload
