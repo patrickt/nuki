@@ -13,13 +13,17 @@
 (get /\/(\w*)/
      (default-headers)
      (set @path (TITLE lastPathComponent))
-     (set @page ($session fetchBlob: @path))
+     (set @page nil)
+     (if ($session fileExists: @path)
+          (set @page ($session fetchBlob: @path)))
      (eval (template-named "page")))
 
 (get /\/(\w*)\/edit/
      (default-headers)
      (set @path (TITLE pathComponent: 1))
-     (set @page ($session fetchBlob: @path))
+     (set @page nil)
+     (if ($session fileExists: @path)
+          (set @page ($session fetchBlob: @path)))
      (eval (template-named "edit")))
 
 (post /\/(\w*)\/edit/
