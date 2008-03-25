@@ -11,6 +11,9 @@
 
 (class NSString
      
+     (imethod (id) stripWhitespace is
+          (self stringByTrimmingCharactersInSet:(NSCharacterSet whitespaceCharacterSet)))
+     
      ;; Grabs the nth path component. There is no error checking on this. Be careful.
      (imethod (id) pathComponent:(int)index is
           ((self pathComponents) index))

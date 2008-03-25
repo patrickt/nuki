@@ -6,12 +6,13 @@
 			<ul>
 			    <li><a href="/">FrontPage</a></li>
                 <li><a href="/<%= @path %>/edit">Edit <%= @path %></a></li>
+                <li><a href="/<%= @path %>/history">History</a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="content">
 	    <% (if @page %>
-	        <%= (NuMarkdown convert: ((@page filesystemContents) escapeHTML)) %>
+	        <%= (NuMarkdown convert: ((@page contents) escapeHTML)) %>
 	        <% (else %>
 	            The page '<%= @path %>' doesn't exist yet. Click on the 'Edit' link above to create it. <% )) %>
 	</div>
