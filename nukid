@@ -9,7 +9,7 @@
 (load "Nu:console")
 (load "Nu:template")
 
-(load "nunja")
+(load "Nunja")
 
 (set $ip "0.0.0.0")
 (set $port "3900")
