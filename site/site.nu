@@ -9,6 +9,13 @@
 (get "/nuki.css"
      (request setValue: "text/css" forResponseHeader:"Content-Type")
      (file-named "nuki.css"))
+     
+(get "/nunja.gif"
+     (puts "Handling imager request.")
+     (request setValue: "image/gif" forResponseHeader: "Content-Type")
+     (set x (NSData dataWithContentsOfFile: "#{$site}/nunja.gif"))
+     (puts x)
+     x)
 
 (get /\/(\w*)/
      (default-headers)

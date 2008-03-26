@@ -1,5 +1,8 @@
 <div id="container">
 	<div id="header">
+	    <div style="float:right; margin-right:10px">
+        <img src="/nunja.gif" alt="Nuki is powered by Nunja!">
+        </div>
 		<h1><a href="/">Nuki</a></h1>
 		<h2>A pure-Nu wiki.</h2>
 		<div id="menu">
