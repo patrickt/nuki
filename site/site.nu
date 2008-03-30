@@ -8,8 +8,12 @@
 
 (get "/nuki.css"
      (request setValue: "text/css" forResponseHeader:"Content-Type")
-     (file-named "nuki.css"))
-     
+     (set HEAD "<meta http-equiv=\"Content-Type\" content=\"text/css; charset=UTF-8\"/>")
+     ;; respondWithString: is necessary in order to circumvent the addition of html tags.
+     (request respondWithString: (NSString stringWithContentsOfFile: "#{$site}/nuki.css"
+          encoding: 4 # Unicode
+          error: nil)))
+
 (get "/nunja.gif"
      (puts "Handling imager request.")
      (request setValue: "image/gif" forResponseHeader: "Content-Type")
@@ -52,7 +56,7 @@
          (set @page ($session fetchBlob: @path)))
      (set @thingy (@page revisionHashes))
      (eval (template-named "history")))
-     
+
 (get /\/(\w*)\/history\/(\w*)/
      (default-headers)
      (set @path (TITLE pathComponent: 1))

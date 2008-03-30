@@ -2,12 +2,6 @@
         (macro __tn
              (NuTemplate codeForFileNamed: "#{$site}/#{(eval (car margs))}.nhtml")))
 
-(global file-named
-        (macro __fn
-             (NSString stringWithContentsOfFile: "#{$site}/#{(eval (car margs))}"
-                  encoding: 4 # Unicode
-                  error: nil)))
-
 ;; Default header information
 (global default-headers
         (macro __dh
