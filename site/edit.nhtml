@@ -6,13 +6,14 @@
 			<ul>
 				<li><a href="/">FrontPage</a></li>
 				<li><a href="<%= "/#{@path}" %>">Back to <%= @path %></a></li>
+				<li><a href="/pages">List of pages</a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="content">
 		<form action=<%= "/#{@path}/edit" %> method="post">
 			<label for="contents">Page contents: </label>
-			<textarea name="contents" rows=35 cols=75><%= (or (@page filesystemContents) "") %></textarea> <br/>
+			<textarea name="contents" rows=35 cols=75><%= (@page filesystemContents) %></textarea> <br/>
 			<input type="submit" value="Commit"/> <br/> <input type="reset"/>
 		</form>
 	</div>

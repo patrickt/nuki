@@ -9,7 +9,9 @@
 		</div>
 	</div>
 	<div id="content">
-		<% (@pages each: (do (page) %><%= (page linkTo) %> <%= (page deleteButton) %> <br><% )) %>
+		<% (@pages each: (do (page) %>
+			<%= (link-to-page page) %> <br>
+		<% )) %>
 	</div>
 	<div id="footer">
 		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>

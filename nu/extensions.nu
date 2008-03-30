@@ -1,4 +1,10 @@
 (class NSFileManager
+    
+    (- (id) directoryContentsAtPath:(id)path withPattern:(id)pattern is
+        ((self directoryContentsAtPath: path) select:
+            (do (directory)
+                (pattern findInString: directory))))
+    
      ;; Forwards unknown methods to the singleton instance of NSFileManager.
      (+ handleUnknownMessage:(id)message withContext:(id)ctx is
         ((NSFileManager defaultManager) sendMessage:message withContext:ctx)))

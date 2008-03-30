@@ -6,11 +6,12 @@
 			<ul>
 			    <li><a href="/">FrontPage</a></li>
                 <li><a href="/<%= @path %>/edit">Edit <%= @path %></a></li>
+				<li><a href="/pages">List of pages</a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="content">	
-		<% (or %>	
+		<% (if @allRevisions %>	
 		    <% (@allRevisions each: (do (hash) %>
 		        Revision: <a href="/<%= @path %>/history/<%= hash %>"><%= hash %></a> <br> <% )) %>
 		<% (else %>

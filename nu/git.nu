@@ -59,6 +59,10 @@
      (- (id) fileExists:(id)path is
         (NSFileManager fileExistsAtPath: "#{$repository}/#{path}"))
      
+     (- (id) allBlobs is
+        ((NSFileManager directoryContentsAtPath:$repository withPattern:/^[^\.]/) map:
+                (do (path) ((GitBlob alloc) initWithPath:path))))
+     
      (- (id) createBlob:(id)path withContents:(id)contents is
         (shell "touch #{$repository}/#{path}")
         (set blob ((GitBlob alloc) initWithPath: path))

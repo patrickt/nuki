@@ -14,6 +14,12 @@
      (request setValue: "image/gif" forResponseHeader: "Content-Type")
      (NSData dataWithContentsOfFile: "#{$site}/nunja.gif"))
 
+(get "/pages"
+     (default-headers)
+     (set @pages ($session allBlobs))
+     (p @pages)
+     (eval (template-named "listpages")))
+
 (get /\/(\w*)/
      (default-headers)
      (set @path (TITLE lastPathComponent))
