@@ -9,4 +9,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
 END)
-             (set TITLE (@match string))))
+             (set TITLE (@match string))
+             (request setValue: "text/html" forResponseHeader: "Content-Type")))

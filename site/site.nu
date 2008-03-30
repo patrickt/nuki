@@ -8,11 +8,8 @@
 
 (get "/nuki.css"
      (request setValue: "text/css" forResponseHeader:"Content-Type")
-     (set HEAD "<meta http-equiv=\"Content-Type\" content=\"text/css; charset=UTF-8\"/>")
-     ;; respondWithString: is necessary in order to circumvent the addition of html tags.
-     (request respondWithString: (NSString stringWithContentsOfFile: "#{$site}/nuki.css"
-          encoding: 4 # Unicode
-          error: nil)))
+     ;; This has to be served with NSData in order to prevent HTML characters being inserted.
+     (NSData dataWithContentsOfFile: "#{$site}/nuki.css"))
 
 (get "/nunja.gif"
      (puts "Handling imager request.")

@@ -67,5 +67,5 @@
         blob)
      
      (- (id) fetchBlob:(id)path is
-        (puts "Fetching blob.")
-        ((GitBlob alloc) initWithPath: path)))
+        (if (self fileExists: path)
+            ((GitBlob alloc) initWithPath: path))))
