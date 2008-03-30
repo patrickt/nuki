@@ -9,10 +9,13 @@
 			</ul>
 		</div>
 	</div>
-	<div id="content">
-	    <% (@thingy each: (do (hash) %>
-	        Revision: <a href="/<%= @path %>/history/<%= hash %>"><%= hash %></a> <br>
-	    <% )) %>
+	<div id="content">	
+		<% (or %>	
+		    <% (@allRevisions each: (do (hash) %>
+		        Revision: <a href="/<%= @path %>/history/<%= hash %>"><%= hash %></a> <br> <% )) %>
+		<% (else %>
+			Since the page <%= @path %> doesn't exist yet, it has no history.
+		<% )) %>
 	</div>
 	<div id="footer">
 		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
