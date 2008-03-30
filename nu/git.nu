@@ -3,25 +3,23 @@
      (ivars) (ivar-accessors)
      
      (- (id) initWithPath:(id)p is
-          (set @path p)
-          (set @contents (self filesystemContents))
-          self)
+        (set @path p)
+        (set @contents (self filesystemContents))
+        self)
      
      (- (id) filesystemContents is
-        (NSString
-                 stringWithContentsOfFile: "#{$repository}/#{@path}"
-                 encoding: UNICODE
-                 error: nil))
-                 
+        (NSString stringWithContentsOfFile: "#{$repository}/#{@path}"
+             encoding: UNICODE
+             error: nil))
+     
      (- (id) revisionHashes is
-          (set huge-output (($session command: "rev-list HEAD #{@path}") stripWhitespace)) 
-          (set hashes (/\n/ splitString: huge-output))
-          (hashes removeLastObject)
-          (puts (hashes count))
-          hashes)
-          
+        (set huge-output (($session command: "rev-list HEAD #{@path}") stripWhitespace))
+        (set hashes (/\n/ splitString: huge-output))
+        (hashes removeLastObject)
+        hashes)
+     
      (- (id) contentsForRevisionHash:(id)hash is
-          ($session command: "show #{hash}:#{@path}"))
+        ($session command: "show #{hash}:#{@path}"))
      
      (- (id) headRevision is
         ($session command: "show :#{@path}"))
@@ -30,11 +28,10 @@
         ($session command: "show @{#{ago}}:#{@path}"))
      
      (- (id) writeString:(id)string is
-        (string
-               writeToFile: "#{$repository}/#{@path}"
-               atomically: YES
-               encoding: UNICODE
-               error: nil))
+        (string writeToFile: "#{$repository}/#{@path}"
+                atomically: YES
+                encoding: UNICODE
+                error: nil))
      
      (- (void) add is
         ($session command: "add #{@path}")))
@@ -71,5 +68,4 @@
      
      (- (id) fetchBlob:(id)path is
         (puts "Fetching blob.")
-        (set b ((GitBlob alloc) initWithPath: path)
-        b)))
+        ((GitBlob alloc) initWithPath: path)))
