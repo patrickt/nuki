@@ -10,9 +10,9 @@ As you can _see_, Markdown works - however, <em>regular</em> HTML is escaped.
 Links are created with Markdown syntax: [About Nuki](/AboutNuki).
 
 The logo above was drawn by the lovely and talented [Victoria Wang](http://violasong.com)
-END))
+END)
+        ($session commit))
           (unless ($session fileExists: "About") 
-               ($session createBlob: "About" withContents: "Nuki was made by Patrick Thomson."))
-
-          ($session commit))
+               ($session createBlob: "About" withContents: "Nuki was made by Patrick Thomson.")
+               ($session commit)))
 

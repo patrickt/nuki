@@ -10,10 +10,6 @@
 (load "Nu:template")
 
 (load "Nunja")
-
-(set $ip "0.0.0.0")
-(set $port "3900")
-
 (load "NuMarkdown")
 
 (load "Nuki")
@@ -22,6 +18,10 @@
 (load "Nuki:helpers")
 (load "Nuki:macros")
 (load "Nuki:preload")
+
+
+(set $ip "0.0.0.0")
+(set $port "3900")
 
 (set $root (NSFileManager currentDirectoryPath))
 (set $site ($root stringByAppendingPathComponent: "site"))

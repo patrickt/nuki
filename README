@@ -5,13 +5,23 @@
 This version of Nuki will depend on Nunja and Git for its web server and version control.
 
  ================
+ = Requirements =
+ ================
+
+Nunja
+
+ ================
  = Installation =
  ================
 
 
 Run:
 	nuke
-to build Nuki. A Nuki.app folder should appear; you may click on it to start a local instance.
+to build the Nuki framework.
+When that's built, run:
+	./nukid
+to launch Nukid, the Nuki daemon.
+
  ==========================================
  = THE NUKI SERVER WILL RUN ON PORT 3900. =
  ==========================================
