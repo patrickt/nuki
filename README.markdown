@@ -8,7 +8,11 @@ This version of Nuki will depend on Nunja and Git for its web server and version
  = Requirements =
  ================
 
-Nunja
+Nuki depends on:
+* Nu
+* Nunja, which in turn depends on libevent
+* NuMarkdown
+* NuSmartyPants
 
  ================
  = Installation =
@@ -30,5 +34,6 @@ to launch Nukid, the Nuki daemon.
  = Credits =
  ===========
 
-A metric ton of thanks go to Tim Burks for developing Nu, NuHTTP, and Nudge 
-(which I ripped off to a flabbergasting extent to build Nuki.)
+I owe an enormous debt of thanks to Tim Burks for building such an excellent language as Nu and as powerful of a web server as Nunja.
+
+A big thanks to Grayson Hansard for pointing out bugs and writing the NuMarkdown and NuSmartyPants frameworks, without which Nuki would look much uglier.
