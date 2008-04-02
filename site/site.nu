@@ -17,7 +17,6 @@
 (get "/pages"
      (default-headers)
      (set @pages ($session allBlobs))
-     (p @pages)
      (eval (template-named "listpages")))
 
 (get /\/(\w*)/
@@ -53,3 +52,11 @@
      (set @page ($session fetchBlob: @path))
      (@page setContents: (@page contentsForRevisionHash: @revision))
      (eval (template-named "page")))
+
+(get /\/(\w*)\/history\/(\w*)\/edit/
+     (default-headers)
+     (set @path (TITLE pathComponent: 1))
+     (set @revision (TITLE pathComponent: 3))
+     (set @page ($session fetchBlob: @path))
+     (@page setContents: (@page contentsForRevisionHash: @revision))
+     (eval (template-named "edit")))

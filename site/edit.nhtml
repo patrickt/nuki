@@ -13,7 +13,7 @@
 	<div id="content">
 		<form action=<%= "/#{@path}/edit" %> method="post">
 			<label for="contents">Page contents: </label>
-			<textarea name="contents" rows=35 cols=75><%= (@page filesystemContents) %></textarea> <br/>
+			<textarea name="contents" rows=35 cols=75><%= (@page contents) %></textarea> <br/>
 			<input type="submit" value="Commit"/> <br/> <input type="reset"/>
 		</form>
 	</div>

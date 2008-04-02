@@ -11,6 +11,7 @@
 
 (load "Nunja")
 (load "NuMarkdown")
+(load "SmartyPants")
 
 (load "Nuki")
 (load "Nuki:git")
