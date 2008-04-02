@@ -1,39 +1,27 @@
- ===============
- = Description =
- ===============
+Nuki
+=============
 
-This version of Nuki will depend on Nunja and Git for its web server and version control.
+Nuki is a Wiki engine written in [Nu][nu] and powered by [Nunja][nj].
 
- ================
- = Requirements =
- ================
+[nu]: http://programming.nu
+[nj]: http://github.com/timburks/nunja/tree/master
 
-Nuki depends on:
-* Nu
-* Nunja, which in turn depends on libevent
-* NuMarkdown
-* NuSmartyPants
+Installation:
+------
 
- ================
- = Installation =
- ================
+Nuki requires [Nu][nu], [Nunja][nj] (which depends on [libevent][le]), [NuMarkdown][nm], and [NuSmartyPants][nsp].
+To build the Nuki sources, run `nuke`; to run nukid, the Nuki daemon, run `./nukid`.
 
+Author:
+-----
+[Patrick Thomson](mailto:ironswallow@gmail.com)  
+His webpage can be found [here](http://importantshock.wordpress.com/).
 
-Run:
-	nuke
-to build the Nuki framework.
-When that's built, run:
-	./nukid
-to launch Nukid, the Nuki daemon.
+Known bugs:
+-----
+Nuki does not deal well with huge pages.
 
- ==========================================
- = THE NUKI SERVER WILL RUN ON PORT 3900. =
- ==========================================
-
- ===========
- = Credits =
- ===========
-
-I owe an enormous debt of thanks to Tim Burks for building such an excellent language as Nu and as powerful of a web server as Nunja.
-
-A big thanks to Grayson Hansard for pointing out bugs and writing the NuMarkdown and NuSmartyPants frameworks, without which Nuki would look much uglier.
+Many thanks to:
+--------------
+[Tim Burks](http://blog.neontology.com/) for Nu, Nunja, guidance and encouragement.
+[Grayson Hansard](http://www.fromconcentratesoftware.com/) for NuSmartyPants, NuMarkdown, and bug reports.
