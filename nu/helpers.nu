@@ -15,6 +15,6 @@
 (global display-page
     (do (page)
         (if page
-            (NuMarkdown convert: (page contents))
+            (NuMarkdown convert: ((page contents) escapeHTML))
             (else
                 "This page doesn't exist yet. Click on the 'Edit' link above to create it."))))

@@ -14,6 +14,7 @@
 		<form action=<%= "/#{@path}/edit" %> method="post">
 			<label for="contents">Page contents: </label>
 			<textarea name="contents" rows=35 cols=75><%= (@page contents) %></textarea> <br/>
+			<label for="description">Describe your changes here: <input type="text" name="description" maxlength="50"/>
 			<input type="submit" value="Commit"/> <br/> <input type="reset"/>
 		</form>
 	</div>
