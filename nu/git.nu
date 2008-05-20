@@ -53,8 +53,12 @@
         (NSFileManager changeCurrentDirectoryPath: $root)
         command)
      
+     (- (id) commitWithMessage:(id)msg is
+        (self command: "commit -m \"#{msg}\""))
+
+     
      (- (id) commit is
-        (self command: "commit -m 'Automatically generated commit from the Nu/Git interface.'"))
+        (self commitWithMessage: "Automatically-generated commit from the Nu/Git interface."))
      
      (- (id) fileExists:(id)path is
         (NSFileManager fileExistsAtPath: "#{$repository}/#{path}"))

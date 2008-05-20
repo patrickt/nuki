@@ -29,7 +29,13 @@
      (- (id) escapeHTML is
         ((((self sub: /\"/ with: "&quot;")
           sub: />/  with: "&gt;")
-         sub: /</  with: "&lt;"))))
+         sub: /</  with: "&lt;")))
+    
+    (- (id) abbreviatedString:(id)numChars is
+        (if (<= (self length) numChars))
+            self
+            (else
+                "#{(self substringToIndex:numChars)}...")))
 
 (class NSNull
      ;; Overriding stringValue prevents parentheses from appearing everywhere in my templates.

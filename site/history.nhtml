@@ -13,7 +13,7 @@
 	<div id="content">	
 		<% (if @allRevisions %>	
 		    <% (@allRevisions each: (do (hash) %>
-		        Rev <a href="/<%= @path %>/history/<%= hash %>"><%= hash %></a>
+		        Rev <a href="/<%= @path %>/history/<%= hash %>"><%= (hash abbreviatedString: 5) %></a>
 		 		(<a href="/<%= @path %>/history/<%= hash %>/edit">Edit</a>)<br> <% )) %>
 		<% (else %>
 			Since the page <%= @path %> doesn't exist yet, it has no history.

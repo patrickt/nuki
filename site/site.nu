@@ -35,7 +35,9 @@
       (default-headers)
       (set @path (TITLE pathComponent: 1))
       (set @page ($session createBlob:@path withContents:((request post) "contents")))
-      ($session commit)
+      (set @message ((request post) "description"))
+      (unless @message (set @message "Automatically-generated commit from Nuki."))
+      ($session commitWithMessage: @message)
       (self redirectResponse: request toLocation: "/#{@path}"))
 
 (get /\/(\w*)\/history/
