@@ -1,94 +1,94 @@
 /* A big thanks to Tim Burks, who let me steal his CSS. */
 
 body {
-margin: 0;
-padding: 0;
-font: normal 14px "lucida grande", verdana, arial, helvetica, sans-serif;
-line-height: 150%;
-color: #000;
-background: #FFF;
+    margin: 0;
+    padding: 0;
+    font: normal 14px "lucida grande", verdana, arial, helvetica, sans-serif;
+    line-height: 150%;
+    color: #000;
+    background: #FFF;
 }
 
 #container {
-width: 800px;
-margin: 10px auto;
-padding: 0px 0px 0px 0px;
-background:#fff;
+    width: 800px;
+    margin: 10px auto;
+    padding: 0px 0px 0px 0px;
+    background:#fff;
 }
 
 #header {
-float:left;
-width: 750px;
-margin: 0;
-padding: 0;
-background:#FFF;
+    float:left;
+    width: 750px;
+    margin: 0;
+    padding: 0;
+    background:#FFF;
 }
 
 #content {
-width: 750px;
-padding: 0;
-margin: 0;
-float: left;
-background:#FFF;
+    width: 750px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    background:#FFF;
 }
 
 #header a:link,
 #header a:visited {
-color:#666;
-text-decoration: none;
+    color:#666;
+    text-decoration: none;
 }
 
 #header a:hover,
 #header a:active {
-color:#444;
-text-decoration: none;
+    color:#444;
+    text-decoration: none;
 }
 
 #header h1 {
-font: bold 200% arial, sans-serif;
-letter-spacing: -1px;
-margin: 0;
-padding: 0;
+    font: bold 200% arial, sans-serif;
+    letter-spacing: -1px;
+    margin: 0;
+    padding: 0;
 }
 
 #header h2 {
-font: bold 90% arial, sans-serif;
-color:#aaa;
-margin:0;
-padding-left:0.1em;
+    font: bold 90% arial, sans-serif;
+    color:#aaa;
+    margin:0;
+    padding-left:0.1em;
 }
 
 #footer {
-clear:both;
-width: 750px;
-margin-top:10em;
-font-size:90%;
-background: #efe;
+    clear:both;
+    width: 750px;
+    margin-top:10em;
+    font-size:90%;
+    background: #eef;
 }
 
 #menu {
-margin: 10px 0;
-background: #efe;
+    margin: 10px 0;
+    background: #eef;
 }
 
 #menu ul {
-margin: 0;
-padding: 0;
-list-style: none;
-height: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 28px;
 }
 
 #menu li {display: inline;}
 
 #menu a {
-float: left;
-padding: 0 10px;
-margin: 0;
-font-size: 14px;
-line-height: 200%;
-color: #888;
-text-decoration: none;
-border-bottom: none;
+    float: left;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 200%;
+    color: #888;
+    text-decoration: none;
+    border-bottom: none;
 }
 
 #message {
