@@ -12,6 +12,7 @@ Installation:
 Nuki requires [Nu][nu], [Nunja][nj] (which depends on [libevent][le]), [NuMarkdown][nm], and [NuSmartyPants][nsp].
 To build the Nuki sources, run `nuke`; to run nukid, the Nuki daemon, run `./nukid`.
 
+[nu]: http://programming.nu
 [le]: http://www.monkey.org/~provos/libevent/
 [nm]: http://github.com/timburks/numarkdown/tree/master
 [nsp]: http://github.com/Grayson/nusmartypants/tree/master
