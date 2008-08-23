@@ -1,31 +1,31 @@
 <html>
-    <head>
-        <title>Nuki!</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <div id="container">
-        	<div id="header">
-        	    <div style="float:right; margin-right:10px">
-                </div>
-        		<h1><a href="/">Nuki</a></h1>
-        		<h2>A pure-Nu wiki.</h2>
-        		<div id="menu">
-        			<ul>
-        			    <li><a href="/">FrontPage</a></li>
-                        <li><a href="/<%= @path %>/edit">Edit <%= @path %></a></li>
-                        <li><a href="/<%= @path %>/history">History</a></li>
-        				<li><a href="/pages">List of pages</a></li>
-        			</ul>
-        		</div>
-        	</div>
-        	<div id="content">
-        	    <%= (display-page @page) %>
-        	</div>
-        	<div id="footer">
-        		<p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
-        	</div>
+<head>
+    <title>Nuki!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/nuki.css" media="all" rel="Stylesheet" type="text/css"/>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div style="float:right; margin-right:10px">
+            </div>
+            <h1><a href="/">Nuki</a></h1>
+            <h2>A pure-Nu wiki.</h2>
+            <div id="menu">
+                <ul>
+                    <li><a href="/">FrontPage</a></li>
+                    <li><a href="/<%= %path %>/edit">Edit <%= %path %></a></li>
+                    <li><a href="/<%= %path %>/history">History</a></li>
+                    <li><a href="/pages">List of pages</a></li>
+                </ul>
+            </div>
         </div>
-    </body>
+        <div id="content">
+            <%= (display-page %page) %>
+        </div>
+        <div id="footer">
+            <p>&copy; 2007 <a href="http://importantshock.wordpress.com">Patrick Thomson</a>. A <a href="http://programming.nu">Nu&#8482;</a> thing.</p>
+        </div>
+    </div>
+</body>
 </html>
