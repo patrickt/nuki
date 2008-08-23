@@ -16,7 +16,6 @@
             </div>
         </div>
         <div id="content">
-            <%= %silly %>
             <% (%pages each: (do (page) %>
             <%= (link-to-page page) %> <br>
             <% )) %>
